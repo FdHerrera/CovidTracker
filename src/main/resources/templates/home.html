@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.thymeleaf.org ">
+
+<head>
+    <title>Coronavirus Tracker</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+</head>
+
+<body>
+
+<div class="container">
+<h1>Coronavirus Tracker</h1>
+<p>Ordenados por país y estado, este programa muestra el número de casos de coronavirus reportados alrededor del mundo.</p>
+
+<div class="jumbotron">
+<h1 class="display-4" th:text="${totalReportedCases}"></h1>
+<p class="lead">Total de casos reportados alrededor del mundo</p>
+
+    <hr class="my-4">
+<p>
+    Se reportaron <strong><span th:text="${totalNewCases}"></span></strong> nuevos casos desde ayer.
+</p>
+</div>
+<table class="table">
+    <tr>
+        <th>País</th>
+        <th>Estado/Provincia</th>
+        <th>Nuevos Casos Reportados desde Ayer</th>
+        <th>Total de Casos en el Mundo</th>
+    </tr>
+    <tr th:each="locationStat : ${locationStats}">
+        <td th:text="${locationStat.country}"></td>
+        <td th:text="${locationStat.state}"></td>
+        <td th:text="${locationStat.newCasesReported}"></td>
+        <td th:text="${locationStat.latestTotalCases}">0</td>
+    </tr>
+</table>
+</div>
+
+
+</body>
+
+</html>
